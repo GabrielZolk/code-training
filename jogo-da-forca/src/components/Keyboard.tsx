@@ -59,7 +59,14 @@ const Button = styled.button<{ isActive: boolean }>`
     }
 `
 
-export default function Keyboard() {
+interface KeyboardProps {
+    disabled?: boolean
+    activeLetters: string[]
+    inactiveLetters: string[]
+    addGuessedLetters: (letter: string) => void
+}
+
+export default function Keyboard({ disabled = false, activeLetters, inactiveLetters, addGuessedLetters }: KeyboardProps) {
     return (
         <div style={{
             display: 'flex',
@@ -68,9 +75,20 @@ export default function Keyboard() {
         }}
         >
             <Wrapper>
-                {keys.map((letter) => (
-                    <Button isActive={true} key={letter}>{letter.toLocaleUpperCase()}</Button>
-                ))}
+                {keys.map((letter) => {
+                    const isActive = !activeLetters.includes(letter)
+                    const isInactive = !inactiveLetters.includes(letter)
+                    return (
+                        <Button
+                            onClick={() => addGuessedLetters(letter)}
+                            isActive={isActive && isInactive}
+                            key={letter}
+                            disabled={!(isActive && isInactive) || disabled}
+                        >
+                            {letter.toLocaleUpperCase()}</Button>
+                    )
+                }
+                )}
             </Wrapper>
         </div>
     )

@@ -10,9 +10,14 @@ const Wrapper = styled.div`
     font-family: monospace;
 `
 
-export default function HangmanWord() {
-    const word = 'teste'
-    const guessedLetters = ['s']
+interface HangmanWordProps {
+    reveal: boolean
+    word: string
+    guessedLetters: string[]
+}
+
+export default function HangmanWord({reveal, word, guessedLetters}: HangmanWordProps) {
+   
     return (
         <Wrapper>{word.split("").map((letter, index) => (
             <span
@@ -21,7 +26,7 @@ export default function HangmanWord() {
                     height: '40px'
                 }} key={index}
             >
-              <span style={{visibility: guessedLetters.includes(letter) ? 'visible' : 'hidden'}}>{letter}</span>  
+              <span style={{visibility: guessedLetters.includes(letter) || reveal ? 'visible' : 'hidden', color: !guessedLetters.includes(letter) && reveal ? 'red' : 'black'}}>{letter}</span>  
              
             </span>
         ))}</Wrapper>
