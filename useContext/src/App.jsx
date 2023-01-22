@@ -1,7 +1,12 @@
-// Stage 1
-
-import { useState } from 'react'
+import { useContext } from 'react'
+import { createContext, useState } from 'react'
 import './App.css'
+
+
+
+
+
+// Stage 1
 
 function App() {
   const [name, setName] = useState('Zolk')
@@ -24,6 +29,9 @@ function ChildrenTwo() {
   )
 }
 
+export default App
+
+
 
 
 
@@ -36,7 +44,7 @@ export function App2() {
   return (
     <>
       <div>{name2}</div>
-      <ChildrenOne2 changeName={setName2}/>
+      <ChildrenOne2 changeName={setName2} />
     </>
   )
 }
@@ -51,4 +59,32 @@ function ChildrenTwo2({ changeName }) {
   )
 }
 
-export default App
+
+
+
+
+// Modo correto - useContext
+
+const AppContext = createContext(null)
+
+export function App3() {
+  const [name3, setName3] = useState('Zolk3')
+
+  return (
+    <AppContext.Provider value={{ name3, setName3 }}>
+      <div>{name3}</div>
+      <ChildrenOne3 changeName={setName3} />
+    </AppContext.Provider>
+  )
+}
+
+function ChildrenOne3() {
+  return <ChildrenTwo3 />
+}
+
+function ChildrenTwo3() {
+  const { setName3 } = useContext(AppContext)
+  return (
+    <button onClick={() => setName3('Carlinhos da Massa3')}>Mude o Nome3</button>
+  )
+}
