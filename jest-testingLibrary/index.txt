@@ -1,0 +1,78 @@
+npm i jest -D
+
+
+
+"scripts": {
+  "test": "jest",
+},
+
+
+
+create - App.spec.jsx (raíz do projeto)
+
+
+
+describe('Jest', () => {
+    it('should work', () => {
+        expect(1).toBe(1)
+    })
+})
+
+
+
+npm i @testing-library/jest-dom @testing-library/react @testing-library/user-event -D
+
+npm i @babel/core @babel/preset-env @babel/preset-react babel-jest identity-obj-proxy jest-environment-jsdom -D
+
+
+
+create - jest.config.js (raíz do projeto)
+module.exports ={
+    testEnvironment: 'jest-environment-jsdom',
+    setupFilesAfterEnv: ['<rootDir>/.jest/setup-tests.js'],
+    moduleNameMapper: {
+        '\\.(gif|ttf|eot|svg|png)$': '<rootDir>/.jest/mocks/fileMock.js',
+        '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
+    },
+}
+
+
+
+
+create folder - .jest (raíz do projeto)
+create - setup-tests.js (inside .jest)
+import '@testing-library/jest-dom' (inside setup-tests.js)
+create folder - mocks (inside .jest)
+create - fileMock.js (inside mocks folder)
+module.exports = 'test-file-stub' (inside fileMock.js)
+
+
+
+create - babel.config.json (raíz do projeto)
+{
+    "presets": [
+        [
+            "@babel/preset-env",
+            {
+                "targets": {
+                    "esmodules": true
+                }
+            }
+        ],
+        [
+            "@babel/preset-react",
+            {
+                "runtime": "automatic"
+            }
+        ]
+    ]
+}
+
+
+
+em package.json, alterar a linha:
+  "type": "module",
+    para:
+  "type": "commonjs",
+
+  (ou deletar linha)
