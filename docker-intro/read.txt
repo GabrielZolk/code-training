@@ -1,0 +1,1 @@
+docker run --name mysql_container -e MYSQL_ROOT_PASSWOR=root mysql
