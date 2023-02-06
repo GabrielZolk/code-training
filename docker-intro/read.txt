@@ -1,1 +1,44 @@
 docker run --name mysql_container -e MYSQL_ROOT_PASSWOR=root mysql
+
+docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=root -d mysql
+
+docker run --name mysql -e MYSQL_ROOT_PASSWORD=root -p 3306:3306 -d mysql
+
+docker ps
+
+docker ps -a
+
+docker run
+
+docker stop
+
+docker start
+
+docker rm [id]
+
+
+npx create-react-app .
+
+
+CRIAR AMBIENTE PERSONALIZADO
+
+create Dockerfile
+
+FROM node:16-alpine
+
+WORKDIR /app
+
+COPY package.json /app/
+COPY package-lock.json /app/
+
+RUN npm  install
+
+COPY . /app/
+
+EXPOSE 3000
+
+CMD [ "npm", "start" ]
+
+docker build -t meu_app .
+
+docker run --name react_app -p 3000:3000 meu_app
