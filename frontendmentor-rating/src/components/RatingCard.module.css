@@ -1,0 +1,77 @@
+.card {
+    background-color: #202630;
+    width: 440px;
+    padding: 2rem 2.5rem;
+    border-radius: 21px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.star { 
+    background-color: #272e38;
+    border-radius: 100%;
+    padding: 10px;
+}
+
+.title {
+    font-size: 29px;
+}
+
+.text {
+    color: #8b919d;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.ratingButton {
+    background-color: #393f47;
+    height: 39px;
+    width: 39px;
+    border-radius: 100%;
+    border: none;
+    color: white;
+}
+
+.ratingButton:hover {
+    background-color: #7c8798;
+}
+
+.ratingButton:focus {
+    background-color: #f57414;
+}
+
+.buttonGroup {
+    display: flex;
+    justify-content: space-between;
+}
+
+.submit {
+    margin-top: 20px;
+    background-color: #f57414;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.submit:hover {
+    background-color:white;
+    color: #f57414;
+}
+
+.pill {
+    background-color: #393f47;
+    padding: 4px 18px;
+    font-weight: 400;
+    border-radius: 18px;
+    font-size: 15px;
+    color: #f57414;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.8rem;
+}
